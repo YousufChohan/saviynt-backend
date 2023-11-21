@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 
 const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
+const categoryRouter = require("./routes/category")
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use(signupRouter);
 app.use(loginRouter);
+app.use(categoryRouter)
 
 var server = app.listen(process.env.API_PORT, (error) => {
   if (error) {
