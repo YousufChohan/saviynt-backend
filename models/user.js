@@ -1,0 +1,39 @@
+const mongoose = require("mongoose");
+
+const UserSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  mobile: {
+    type: String,
+    required: false,
+  },
+  role: {
+    type: String,
+    required: false,
+    default: "Customer",
+  },
+  isVerified: {
+    type: Boolean,
+    required: false,
+  },
+  // wishlist: {
+  //   type: Array,
+  //   required: false,
+  // },
+  // profilePicture: [
+  //     {
+  //         type: mongoose.Schema.Types.ObjectId,
+  //         ref: "File",
+  //         required: false,
+  //     },
+  // ],
+});
+
+module.exports = mongoose.model("User", UserSchema);
