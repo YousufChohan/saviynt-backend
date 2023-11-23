@@ -5,17 +5,21 @@ class UploadProductController {
   static async Execute(req, res) {
     const {
       productName,
-      productType,
+      productCategory,
+      productTag,
       productDetail,
       productPrice,
-      productRating,
+      isArchived,
+      colorVariant,
     } = req.body;
 
-    if (!productName || !productType || !productDetail || !productPrice) {
+    if (!productName || !productCategory || !productTag || !productDetail || !productPrice || !isArchived || (req.files && Object.keys(req.files).length === 0)) {
+
       return res.status(400).json({
         message: "Missing required fields",
       });
     } else {
+      console.log(req.files)
       var productPicture = [];
 
       for (const file of req.files.productPicture) {
@@ -29,13 +33,18 @@ class UploadProductController {
         productPicture.push(fileNew._id);
       }
 
+      console.log(productPicture)
+
       const newProduct = new Product({
         productName,
-        productType,
+        productCategory,
+        productTag,
         productDetail,
         productPrice,
-        productRating,
-        productPicture,
+        productRating: 0,
+        isArchived,
+        colorVariant,
+        productPicture
       });
 
       try {

@@ -6,10 +6,18 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    productType: {
-      type: String,
-      required: true,
-    },
+    productCategory:
+      [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "category",
+        required: false,
+      }],
+    productTag:
+      [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "tag",
+        required: false,
+      }],
     productDetail: {
       type: String,
       required: true,

@@ -5,20 +5,24 @@ const GetCategory = require("../controllers/GetCategory");
 const PutCategory = require("../controllers/PutCategory");
 const DeleteCategory = require("../controllers/DeleteCategory");
 
-CategoryRouter.post("/category", async (req, res) => {
+
+const customerAuth = require("../middleware/customerAuth");
+const adminAuth = require("../middleware/adminAuth");
+
+CategoryRouter.post("/category", adminAuth, async (req, res) => {
     UploadCategory.Execute(req, res);
 });
 
 
-CategoryRouter.get("/category", async (req, res) => {
+CategoryRouter.get("/category", customerAuth, async (req, res) => {
     GetCategory.Execute(req, res);
 });
 
-CategoryRouter.put("/category", async (req, res) => {
+CategoryRouter.put("/category", adminAuth, async (req, res) => {
     PutCategory.Execute(req, res);
 });
 
-CategoryRouter.delete("/category", async (req, res) => {
+CategoryRouter.delete("/category", adminAuth, async (req, res) => {
     DeleteCategory.Execute(req, res);
 });
 

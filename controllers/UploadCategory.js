@@ -12,7 +12,10 @@ class UploadCategoryController {
         } else {
 
             const category = new Category(
-                { name: name }
+                {
+                    name,
+                    isParent: true
+                }
             )
 
             await category.save().then(result => {
