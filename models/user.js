@@ -12,12 +12,17 @@ const UserSchema = mongoose.Schema({
   },
   mobile: {
     type: String,
-    required: false,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+    // default: "Customer",
   },
   role: {
     type: String,
     required: false,
-    default: "Customer",
+    // default: "Customer",
   },
   isVerified: {
     type: Boolean,

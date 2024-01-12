@@ -7,18 +7,20 @@ const saltRounds = 10;
 class SignupController {
   static async Execute(req, res) {
     console.log(req.body);
-    const { name, email, password } = req.body;
+    const { name, email, mobile, password, type } = req.body;
 
-    if (!name || !email || !password) {
+    if (!name || !email || !mobile || !password || !type) {
       res.status(400).json({
         message: `Invalid Request`,
       });
     } else {
       console.log(req.body);
+      console.log("body logged");
       const user = new User({
         name: name.trim(),
+        mobile: mobile.trim(),
         email: email.trim().toLowerCase(),
-        // role: role.trim(),
+        type: type.trim(),
       });
 
       const existingUser = await User.find({
