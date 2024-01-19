@@ -6,38 +6,27 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    productCategory:
-      [{
+    productCategory: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "category",
         required: false,
-      }],
-    productTag:
-      [{
+      },
+    ],
+    productTag: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "tag",
         required: false,
-      }],
+      },
+    ],
     productDetail: {
       type: String,
       required: true,
     },
-    productPrice: {
-      type: Number,
-      required: true,
-    },
-    productRating: {
-      type: String,
-      required: false,
-    },
     isArchived: {
       type: Boolean,
       default: false,
-      required: false,
-    },
-    highestBid: {
-      type: Number,
-      default: 0,
       required: false,
     },
     colorVariant: {
@@ -52,6 +41,93 @@ const ProductSchema = mongoose.Schema(
         required: false,
       },
     ],
+    creatorName: {
+      type: String,
+      ref: "User",
+      required: true,
+    },
+    // addedBy: {
+    //   type: String,
+    //   required: false,
+    // },
+    shippedBy: {
+      type: String,
+      required: true,
+    },
+    upcCode: {
+      type: String,
+      required: true,
+    },
+    currentPrice: {
+      type: String,
+      required: true,
+    },
+    currentPrice: {
+      type: String,
+      required: true,
+    },
+    formattedPrice: {
+      type: String,
+      default: "$ " + currentPrice,
+      required: true,
+    },
+    // defaultSize: {
+    //   type: String,
+    //   required: true,
+    // },
+    description: {
+      type: String,
+      required: true,
+    },
+    businessName: {
+      type: String,
+      required: true,
+    },
+    website: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    // avatar: {
+    //   type: String,
+    //   required: true,
+    // },
+    longitude: {
+      type: String,
+      required: false,
+    },
+    latitude: {
+      type: String,
+      required: false,
+    },
+    noOfViews: {
+      type: String,
+      required: false,
+    },
+    noOfLikes: {
+      type: String,
+      required: false,
+    },
+    noOfDislikes: {
+      type: String,
+      required: false,
+    },
+    noOfReviews: {
+      type: String,
+      required: false,
+    },
+    noOfShares: {
+      type: String,
+      required: false,
+    },
+    rating: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
