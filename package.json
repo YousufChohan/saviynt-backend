@@ -1,12 +1,12 @@
 {
-  "name": "funshop_backend",
+  "name": "beti-backend",
   "version": "1.0.0",
-  "description": "backend for an app called FunShop ",
+  "description": "backend for a web-app called BETI ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Joseph Chamberlain",
+  "author": "Joseph Z. Chamberlain",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
