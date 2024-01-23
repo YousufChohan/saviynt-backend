@@ -29,11 +29,18 @@ const ProductSchema = mongoose.Schema(
       default: false,
       required: false,
     },
-    colorVariant: {
-      type: Array,
-      default: [],
-      required: false,
-    },
+    variants: [
+      {
+        name: {
+          type: String,
+          required: true,
+        },
+        values: {
+          type: [String],
+          required: true,
+        },
+      },
+    ],
     productPicture: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -62,15 +69,15 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    currentPrice: {
-      type: String,
-      required: true,
-    },
-    formattedPrice: {
-      type: String,
-      default: "$ " + currentPrice,
-      required: true,
-    },
+    // currentPrice: {
+    //   type: String,
+    //   required: true,
+    // },
+    // formattedPrice: {
+    //   type: String,
+    //   default: "$ " + currentPrice,
+    //   required: true,
+    // },
     // defaultSize: {
     //   type: String,
     //   required: true,

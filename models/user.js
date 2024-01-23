@@ -37,13 +37,13 @@ const UserSchema = mongoose.Schema({
   //   type: Array,
   //   required: false,
   // },
-  // profilePicture: [
-  //     {
-  //         type: mongoose.Schema.Types.ObjectId,
-  //         ref: "File",
-  //         required: false,
-  //     },
-  // ],
+  profilePicture: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "File",
+      required: false,
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", UserSchema);
