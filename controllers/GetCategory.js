@@ -3,7 +3,7 @@ const Category = require("../models/category");
 
 class GetCategoryController {
   static async Execute(req, res) {
-    console.log("Category Getting API Hit");
+    console.log("Category Getting api Hit");
 
     const { id } = req.query;
 
