@@ -9,12 +9,12 @@ const upload = require("./middleware/upload");
 
 const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
-const categoryRouter = require("./routes/category")
-const tagRouter = require("./routes/tag")
-const productRouter = require("./routes/product")
-const file = require("./routes/file")
-const admin = require("./routes/admin")
-const subCategory = require("./routes/subCategory")
+const categoryRouter = require("./routes/category");
+const tagRouter = require("./routes/tag");
+const eventRouter = require("./routes/event");
+const file = require("./routes/file");
+const admin = require("./routes/admin");
+const subCategory = require("./routes/subCategory");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -22,12 +22,12 @@ app.use(express.json());
 
 app.use(signupRouter);
 app.use(loginRouter);
-app.use(categoryRouter)
-app.use(subCategory)
-app.use(tagRouter)
-app.use(file)
-app.use(admin)
-app.use(productRouter(upload))
+app.use(categoryRouter);
+app.use(subCategory);
+app.use(tagRouter);
+app.use(file);
+app.use(admin);
+app.use(eventRouter(upload));
 
 var server = app.listen(process.env.API_PORT, (error) => {
   if (error) {

@@ -14,11 +14,6 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  type: {
-    type: String,
-    required: true,
-    // default: "Customer",
-  },
   gender: {
     type: String,
     required: false,
