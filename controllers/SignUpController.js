@@ -7,7 +7,7 @@ const saltRounds = 10;
 class SignupController {
   static async Execute(req, res) {
     console.log(req.body);
-    const { name, email, mobile, password, type } = req.body;
+    const { name, email, mobile, password, type, role } = req.body;
 
     if (!name || !email || !mobile || !password || !type) {
       res.status(400).json({
@@ -42,7 +42,7 @@ class SignupController {
                   user: response._id,
                   email: response.email.trim(),
                   password: hash,
-                  role: "Customer",
+                  role: role ? role : "Customer",
                   OTP: password,
                 });
 
