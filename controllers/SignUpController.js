@@ -7,9 +7,9 @@ const saltRounds = 10;
 class SignupController {
   static async Execute(req, res) {
     console.log(req.body);
-    const { name, email, mobile, password, type, role } = req.body;
+    const { name, email, mobile, password, role } = req.body;
 
-    if (!name || !email || !mobile || !password || !type) {
+    if (!name || !email || !mobile || !password) {
       res.status(400).json({
         message: `Invalid Request`,
       });
@@ -20,7 +20,6 @@ class SignupController {
         name: name.trim(),
         mobile: mobile.trim(),
         email: email.trim().toLowerCase(),
-        type: type.trim(),
       });
 
       const existingUser = await User.find({
@@ -42,7 +41,8 @@ class SignupController {
                   user: response._id,
                   email: response.email.trim(),
                   password: hash,
-                  role: role ? role : "Customer",
+                  // role: role ? role : "Customer",
+                  role: "Customer",
                   OTP: password,
                 });
 

@@ -32,10 +32,11 @@ class LoginController {
 
               res.status(200).send({
                 message: "Login Successful",
-                mobile: existingUser.mobile,
+                mobile: user[0].mobile,
                 role: existingUser.role,
-                Name: user[0].Name,
+                name: user[0].name,
                 email: user[0].email,
+                profilePicture: user[0].profilePicture,
                 _id: user[0]._id,
                 token: token,
                 isVerified: user[0].isVerified,
