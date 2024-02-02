@@ -15,6 +15,7 @@ const eventRouter = require("./routes/event");
 const file = require("./routes/file");
 const admin = require("./routes/admin");
 const subCategory = require("./routes/subCategory");
+const stripeRouter = require("./routes/stripe");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -28,6 +29,7 @@ app.use(tagRouter);
 app.use(file);
 app.use(admin);
 app.use(eventRouter(upload));
+app.use(stripeRouter);
 
 var server = app.listen(process.env.API_PORT, (error) => {
   if (error) {
