@@ -21,11 +21,10 @@ stripeRouter.post("/create-checkout-session", async (req, res) => {
             currency: "usd",
             product_data: {
               name: item.name,
-              // images: [item.eventPicture], // Fix typo: "imaegs" to "images"
+              // images: [item.eventPicture],
               description: item.venue,
               metadata: {
                 id: item._id,
-                venue: item.venue,
               },
             },
             unit_amount: price * 100,
@@ -39,11 +38,10 @@ stripeRouter.post("/create-checkout-session", async (req, res) => {
             currency: "usd",
             product_data: {
               name: items.name,
-              // images: [items.eventPicture], // Fix typo: "imaegs" to "images"
+              // images: [items.eventPicture],
               description: items.venue,
               metadata: {
                 id: items._id,
-                venue: items.venue,
               },
             },
             unit_amount: price * 100,
@@ -56,7 +54,13 @@ stripeRouter.post("/create-checkout-session", async (req, res) => {
     line_items,
     mode: "payment",
     success_url: `${process.env.CLIENT_URL}/checkout-success`,
-    cancel_url: `${process.env.CLIENT_URL}`,
+    cancel_url: `${process.env.CLIENT_URL}/events`,
+    payment_intent_data: {
+      // receipt_email: "customer@example.com",
+      metadata: {
+        business_name: "BETI - SANPEC",
+      },
+    },
   });
 
   res.send({ url: session.url });
