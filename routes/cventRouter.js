@@ -78,7 +78,7 @@ const serveEventDataFromDB = async (req, res, next) => {
     const eventData = await Cvent.find();
     res.json(eventData);
   } catch (error) {
-    console.error("Error fetching event data from database:", error);
+    console.error("Error fetchings event data from database:", error);
     res.status(500).json({ error: "Error fetching event data from database" });
   }
 };
