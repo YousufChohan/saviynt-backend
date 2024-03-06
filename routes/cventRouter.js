@@ -3,6 +3,7 @@ const axios = require("axios");
 const Cvent = require("../models/Cvent");
 
 const cventRouter = express.Router();
+const adminAuth = require("../middleware/adminAuth"); // Import the adminAuth middleware
 
 const client_id = "0oaxo3nctc8Yx37qa1t7";
 const client_secret =
@@ -60,6 +61,7 @@ const updateCventDataInDB = async () => {
     await Cvent.deleteMany({}); // Clear existing data
     await Cvent.insertMany(response.data); // Insert new data
     console.log("Cvent data updated in the database");
+    return response.data;
   } catch (error) {
     console.error("Error updating Cvent data in the database:", error);
   }
@@ -84,5 +86,16 @@ const serveEventDataFromDB = async (req, res, next) => {
 };
 
 cventRouter.get("/getcventdata", serveEventDataFromDB);
+
+cventRouter.get("/updatecventdata", adminAuth, async (req, res) => {
+  try {
+    await updateCventDataInDB();
+
+    res.status(200).json({ message: "Cvent data updated successfully" });
+  } catch (error) {
+    console.error("Error updating Cvent data:", error);
+    res.status(500).json({ error: "Error updating Cvent data" });
+  }
+});
 
 module.exports = cventRouter;
