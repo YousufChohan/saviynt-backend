@@ -3,9 +3,6 @@ const UploadCustomerController = require("../controllers/UploadCustomerControlle
 const DeleteCustomerController = require("../controllers/DeleteCustomerController"); // Import the new controller
 const { files, validationResult } = require("express-validator");
 
-const adminAuth = require("../middleware/adminAuth");
-const customerAuth = require("../middleware/customerAuth");
-
 const CustomerRouter = require("express").Router();
 
 module.exports = (upload) => {
@@ -24,7 +21,7 @@ module.exports = (upload) => {
   });
 
   // Add the delete route
-  CustomerRouter.delete("/customer", adminAuth, async (req, res) => {
+  CustomerRouter.delete("/customer", async (req, res) => {
     DeleteCustomerController.Execute(req, res);
   });
 
