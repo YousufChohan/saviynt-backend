@@ -7,7 +7,7 @@ class GetCustomerController {
     try {
       if (!userID) {
         return res.status(400).json({
-          message: `Invalid Request, Please Provide a UserID`,
+          message: `Invalid Request, Please Provide a UserId`,
         });
       }
 
